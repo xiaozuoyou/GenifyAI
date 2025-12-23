@@ -1,0 +1,62 @@
+{
+  "name": "genifyai",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Intelligent coding assistant MCP tool with AST-based code indexing",
+  "main": "dist/index.js",
+  "bin": {
+    "genifyai": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "mcp",
+    "code-assistant",
+    "tree-sitter",
+    "ast",
+    "code-search"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaozuoyou/Genify"
+  },
+  "packageManager": "pnpm@10.26.1",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@vscode/ripgrep": "^1.15.0",
+    "node-gyp-build": "^4.8.4",
+    "tree-sitter": "^0.21.1",
+    "tree-sitter-css": "0.21.1",
+    "tree-sitter-html": "0.23.2",
+    "tree-sitter-solidity": "1.2.7",
+    "tree-sitter-typescript": "^0.23.2",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@vscode/ripgrep",
+      "tree-sitter",
+      "tree-sitter-javascript",
+      "tree-sitter-typescript",
+      "tree-sitter-solidity",
+      "tree-sitter-html",
+      "tree-sitter-css"
+    ]
+  }
+}
