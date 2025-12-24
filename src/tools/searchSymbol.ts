@@ -40,6 +40,8 @@ export const searchSymbolSchema = z.object({
       'variable',
       'mixin',
       'keyframes',
+      // Python
+      'decorator',
     ])
     .optional()
     .describe('Optional filter by symbol type'),

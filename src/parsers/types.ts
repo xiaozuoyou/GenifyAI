@@ -30,7 +30,9 @@ export type SymbolKind =
   | 'selector'
   | 'variable'
   | 'mixin'
-  | 'keyframes';
+  | 'keyframes'
+  // Python
+  | 'decorator';
 
 export interface SymbolLocation {
   startLine: number;
@@ -65,7 +67,7 @@ export interface ExportInfo {
   location: SymbolLocation;
 }
 
-export type SupportedLanguage = 'typescript' | 'solidity' | 'html' | 'css';
+export type SupportedLanguage = 'typescript' | 'solidity' | 'html' | 'css' | 'python';
 
 export interface LanguageParser {
   language: SupportedLanguage;

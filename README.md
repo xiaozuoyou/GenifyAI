@@ -11,7 +11,7 @@
 - 🎯 **精准定位** - AST 级别解析，区分定义和引用
 - ⚡ **极速响应** - ripgrep 粗筛 + Tree-sitter 精筛，毫秒级返回
 - 🗣️ **自然语言** - 支持模糊搜索和别名，用你习惯的方式找代码
-- 🌐 **多语言** - TypeScript/JavaScript、Solidity、HTML、CSS 等（持续扩展中）
+- 🌐 **多语言** - TypeScript/JavaScript、Python、Solidity、HTML、CSS 等（持续扩展中）
 
 ## 快速开始
 
@@ -75,7 +75,7 @@
 { "query": "useState", "type": "function", "scope": "src" }
 ```
 
-支持的符号类型：`function` `class` `interface` `type` `enum` `const` `let` `var` `function_component` `method` `getter` `setter`
+支持的符号类型：`function` `class` `interface` `type` `enum` `const` `let` `var` `function_component` `class_component` `hook` `method` `getter` `setter` `decorator`
 
 ### `read_range` - 读取代码
 
@@ -107,7 +107,8 @@
 
 | 语言 | 扩展名 | 符号类型 |
 |------|--------|----------|
-| TypeScript/JavaScript | `.ts` `.tsx` `.js` `.jsx` | function, class, interface, type, enum, const, let, var, function_component, method, getter, setter |
+| TypeScript/JavaScript | `.ts` `.tsx` `.js` `.jsx` | function, class, interface, type, enum, const, let, var, function_component, class_component, hook, method, getter, setter |
+| Python | `.py` `.pyw` | function, class, method, decorator |
 | Solidity | `.sol` | contract, library, interface, struct, event, modifier, error, function, enum |
 | HTML | `.html` `.htm` | element (#id), component |
 | CSS/Less/Sass | `.css` `.less` `.sass` `.scss` | selector, variable, keyframes |
@@ -125,11 +126,6 @@
 **别名持久化** - 别名存储在 `.genifyai/aliases.json`，可提交到仓库共享
 
 ---
-
-## 系统要求
-
-- Node.js >= 18
-- 支持 MCP 协议的客户端（Claude Desktop、Cursor 等）
 
 ## License
 

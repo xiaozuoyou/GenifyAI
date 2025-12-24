@@ -12,3 +12,8 @@ declare module 'tree-sitter-solidity' {
   const language: import('tree-sitter').Language;
   export default language;
 }
+
+declare module 'tree-sitter-python' {
+  const language: import('tree-sitter').Language;
+  export default language;
+}

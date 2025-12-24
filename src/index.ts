@@ -56,6 +56,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
                 'method',
                 'getter',
                 'setter',
+                'decorator',
               ],
               description: 'Optional filter by symbol type',
             },
