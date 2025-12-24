@@ -1,9 +1,15 @@
 import Parser from 'tree-sitter';
-import HTML from 'tree-sitter-html';
+import { createRequire } from 'module';
+import path from 'path';
 import type { SymbolInfo, SymbolKind, ParseResult, ExportInfo, LanguageParser } from './types.js';
 import { readFileContent, formatRange } from '../utils/fileReader.js';
 import { getCachedResult, setCachedResult } from './cache.js';
 import { registerParser } from './registry.js';
+
+const require = createRequire(import.meta.url);
+const nodeGypBuild = require('node-gyp-build');
+const htmlPkgPath = path.dirname(require.resolve('tree-sitter-html/package.json'));
+const HTML = nodeGypBuild(htmlPkgPath);
 
 const htmlParser = new Parser();
 htmlParser.setLanguage(HTML);

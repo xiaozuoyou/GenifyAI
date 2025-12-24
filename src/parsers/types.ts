@@ -9,6 +9,8 @@ export type SymbolKind =
   | 'let'
   | 'var'
   | 'function_component'
+  | 'class_component'
+  | 'hook'
   | 'method'
   | 'getter'
   | 'setter'

@@ -1,9 +1,15 @@
 import Parser from 'tree-sitter';
-import CSS from 'tree-sitter-css';
+import { createRequire } from 'module';
+import path from 'path';
 import type { SymbolInfo, SymbolKind, ParseResult, ExportInfo, LanguageParser } from './types.js';
 import { readFileContent, formatRange } from '../utils/fileReader.js';
 import { getCachedResult, setCachedResult } from './cache.js';
 import { registerParser } from './registry.js';
+
+const require = createRequire(import.meta.url);
+const nodeGypBuild = require('node-gyp-build');
+const cssPkgPath = path.dirname(require.resolve('tree-sitter-css/package.json'));
+const CSS = nodeGypBuild(cssPkgPath);
 
 const cssParser = new Parser();
 cssParser.setLanguage(CSS);

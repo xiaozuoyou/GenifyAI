@@ -105,7 +105,34 @@ function isArrowFunctionComponent(node: Parser.SyntaxNode): boolean {
   const value = declarator.childForFieldName('value');
   if (!value) return false;
 
-  return value.type === 'arrow_function';
+  return value.type === 'arrow_function' || isReactHOC(value);
+}
+
+function isHookName(name: string): boolean {
+  return /^use[A-Z]/.test(name);
+}
+
+function isPascalCase(name: string): boolean {
+  return /^[A-Z]/.test(name);
+}
+
+function isReactHOC(node: Parser.SyntaxNode | null): boolean {
+  if (!node || node.type !== 'call_expression') return false;
+  const callee = node.childForFieldName('function');
+  if (!callee) return false;
+
+  if (callee.type === 'member_expression') {
+    const prop = callee.childForFieldName('property');
+    return prop?.text === 'memo' || prop?.text === 'forwardRef';
+  }
+  return callee.text === 'memo' || callee.text === 'forwardRef';
+}
+
+function isClassComponent(node: Parser.SyntaxNode): boolean {
+  if (node.type !== 'class_declaration') return false;
+  const heritage = node.namedChildren.find((c) => c.type === 'class_heritage');
+  if (!heritage) return false;
+  return /Component|PureComponent/.test(heritage.text);
 }
 
 function collectSymbols(
@@ -118,12 +145,21 @@ function collectSymbols(
   let shouldProcess = false;
 
   switch (node.type) {
-    case 'function_declaration':
-      kind = 'function';
+    case 'function_declaration': {
+      const nameNode = node.childForFieldName('name');
+      const name = nameNode?.text ?? '';
+      if (isHookName(name)) {
+        kind = 'hook';
+      } else if (isPascalCase(name)) {
+        kind = 'function_component';
+      } else {
+        kind = 'function';
+      }
       shouldProcess = true;
       break;
+    }
     case 'class_declaration':
-      kind = 'class';
+      kind = isClassComponent(node) ? 'class_component' : 'class';
       shouldProcess = true;
       break;
     case 'interface_declaration':
@@ -138,14 +174,22 @@ function collectSymbols(
       kind = 'enum';
       shouldProcess = true;
       break;
-    case 'lexical_declaration':
+    case 'lexical_declaration': {
+      const declarator = node.namedChildren.find((c) => c.type === 'variable_declarator');
+      const nameNode = declarator?.childForFieldName('name');
+      const name = nameNode?.text ?? '';
+      const value = declarator?.childForFieldName('value');
+
       if (isArrowFunctionComponent(node)) {
         kind = 'function_component';
+      } else if (isHookName(name) && value?.type === 'arrow_function') {
+        kind = 'hook';
       } else {
         kind = getDeclarationKind(node);
       }
       shouldProcess = true;
       break;
+    }
     case 'variable_declaration':
       kind = 'var';
       shouldProcess = true;

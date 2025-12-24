@@ -18,6 +18,8 @@ export const searchSymbolSchema = z.object({
       'let',
       'var',
       'function_component',
+      'class_component',
+      'hook',
       'method',
       'getter',
       'setter',
