@@ -42,6 +42,11 @@ export const searchSymbolSchema = z.object({
       'keyframes',
       // Python
       'decorator',
+      // Vue
+      'computed',
+      'watch',
+      'props',
+      'emits',
     ])
     .optional()
     .describe('Optional filter by symbol type'),

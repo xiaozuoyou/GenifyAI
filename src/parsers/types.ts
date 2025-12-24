@@ -32,7 +32,12 @@ export type SymbolKind =
   | 'mixin'
   | 'keyframes'
   // Python
-  | 'decorator';
+  | 'decorator'
+  // Vue
+  | 'computed'
+  | 'watch'
+  | 'props'
+  | 'emits';
 
 export interface SymbolLocation {
   startLine: number;
@@ -67,7 +72,7 @@ export interface ExportInfo {
   location: SymbolLocation;
 }
 
-export type SupportedLanguage = 'typescript' | 'solidity' | 'html' | 'css' | 'python';
+export type SupportedLanguage = 'typescript' | 'solidity' | 'html' | 'css' | 'python' | 'vue';
 
 export interface LanguageParser {
   language: SupportedLanguage;

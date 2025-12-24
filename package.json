@@ -27,7 +27,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xiaozuoyou/Genify"
+    "url": "https://github.com/xiaozuoyou/GenifyAI"
   },
   "packageManager": "pnpm@10.26.1",
   "engines": {

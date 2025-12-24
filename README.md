@@ -11,7 +11,7 @@
 - 🎯 **精准定位** - AST 级别解析，区分定义和引用
 - ⚡ **极速响应** - ripgrep 粗筛 + Tree-sitter 精筛，毫秒级返回
 - 🗣️ **自然语言** - 支持模糊搜索和别名，用你习惯的方式找代码
-- 🌐 **多语言** - TypeScript/JavaScript、Python、Solidity、HTML、CSS 等（持续扩展中）
+- 🌐 **多语言** - TypeScript/JavaScript、Vue、Python、Solidity、HTML、CSS 等（持续扩展中）
 
 ## 快速开始
 
@@ -108,6 +108,7 @@
 | 语言 | 扩展名 | 符号类型 |
 |------|--------|----------|
 | TypeScript/JavaScript | `.ts` `.tsx` `.js` `.jsx` | function, class, interface, type, enum, const, let, var, function_component, class_component, hook, method, getter, setter |
+| Vue | `.vue` | 继承 TS/CSS 全部符号 + computed, watch, props, emits, component |
 | Python | `.py` `.pyw` | function, class, method, decorator |
 | Solidity | `.sol` | contract, library, interface, struct, event, modifier, error, function, enum |
 | HTML | `.html` `.htm` | element (#id), component |

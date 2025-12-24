@@ -7,6 +7,7 @@ import './solidity.js';
 import './html.js';
 import './css.js';
 import './python.js';
+import './vue.js';
 
 export function parseFile(filePath: string): ParseResult {
   const parser = getParserForFile(filePath);

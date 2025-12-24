@@ -24,7 +24,7 @@ export async function searchPattern(
 ): Promise<RipgrepMatch[]> {
   const {
     scope,
-    extensions = ['ts', 'tsx', 'js', 'jsx', 'sol', 'html', 'htm', 'css', 'less', 'sass', 'scss', 'py', 'pyw'],
+    extensions = ['ts', 'tsx', 'js', 'jsx', 'sol', 'html', 'htm', 'css', 'less', 'sass', 'scss', 'py', 'pyw', 'vue'],
     ignorePatterns = getIgnorePatterns(),
     maxResults = 1000,
   } = options;
