@@ -15,7 +15,7 @@ import { setWorkspaceRoot } from './utils/pathResolver.js';
 const server = new Server(
   {
     name: 'genifyai',
-    version: '0.1.3',
+    version: '0.1.5',
   },
   {
     capabilities: {

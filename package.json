@@ -1,6 +1,6 @@
 {
   "name": "genifyai",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "type": "module",
   "description": "Intelligent coding assistant MCP tool with AST-based code indexing",
   "main": "dist/index.js",
